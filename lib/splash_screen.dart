@@ -40,8 +40,8 @@ class SplashscreenState extends State<Splashscreen> {
               Center(
                 child: Image.asset("assets/images/image1.png", height: 250),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 " WEL-COME ",
                 style: TextStyle(color: Color(0xFF8C8A87), fontWeight: FontWeight.w700, fontSize: 30, fontFamily: "CircularStd"),
               ),
