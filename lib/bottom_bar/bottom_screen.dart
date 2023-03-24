@@ -51,22 +51,22 @@ class _BottomScreenState extends State<BottomScreen> {
             BottomNavigationBarItem(
               icon: selectedIndex == 1
                   ? SvgPicture.asset(
-                      "assets/Icons/save_Fill.svg",
-                    )
-                  : SvgPicture.asset(
-                      "assets/Icons/save.svg",
-                    ),
-              label: 'History',
-            ),
-            BottomNavigationBarItem(
-              icon: selectedIndex == 2
-                  ? SvgPicture.asset(
                       "assets/Icons/wallet_Fill.svg",
                     )
                   : SvgPicture.asset(
                       "assets/Icons/Wallet.svg",
                     ),
-              label: 'Statistic',
+              label: 'Save',
+            ),
+            BottomNavigationBarItem(
+              icon: selectedIndex == 2
+                  ? SvgPicture.asset(
+                      "assets/Icons/save_Fill.svg",
+                    )
+                  : SvgPicture.asset(
+                      "assets/Icons/save.svg",
+                    ),
+              label: 'Invest',
             ),
             BottomNavigationBarItem(
               icon: selectedIndex == 3

@@ -1,3 +1,4 @@
+import 'package:crypto_app/bottom_bar/bottom_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -42,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -58,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: TextStyle(color: Color(0xFF8C8A87), fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               ListView.separated(
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 30,
@@ -114,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               Row(
                 children: const [
                   Icon(Icons.error_outline, size: 24),
@@ -166,7 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignUpScreen(),
+                        builder: (context) => const BottomScreen(),
                       ));
                   debugPrint('next page');
                 },

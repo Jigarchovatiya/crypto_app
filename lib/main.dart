@@ -1,4 +1,4 @@
-import 'package:crypto_app/bottom_bar/bottom_screen.dart';
+import 'package:crypto_app/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,11 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Crypto app',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const BottomScreen(),
+      // routes: appRoutes,
+      // initialRoute: RoutesName.splashScreen,
+      home: const Splashscreen(),
     );
   }
 }

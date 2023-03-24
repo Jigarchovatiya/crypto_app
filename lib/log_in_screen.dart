@@ -1,3 +1,4 @@
+import 'package:crypto_app/bottom_bar/bottom_screen.dart';
 import 'package:flutter/material.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -115,12 +116,12 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(height: 50),
               InkWell(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => const SignUpScreen(),
-                  //     ));
-                  // debugPrint('next page');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BottomScreen(),
+                      ));
+                  debugPrint('next page');
                 },
                 child: Container(
                   height: 50,

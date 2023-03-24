@@ -21,12 +21,12 @@ class IntroScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20, fontFamily: "CircularStd"),
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 30),
               Image.asset(
                 "assets/images/image1.png",
                 height: 260,
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               const Text(
                 "Send cash to anyone, anywhere",
                 textAlign: TextAlign.center,
@@ -38,7 +38,7 @@ class IntroScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Color(0xFF8C8A87), fontWeight: FontWeight.w400, fontSize: 14, fontFamily: "CircularStd"),
               ),
-              const SizedBox(height: 80),
+              const SizedBox(height: 20),
               const Text(
                 " Try out our time machine?",
                 textAlign: TextAlign.center,
@@ -71,27 +71,28 @@ class IntroScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LogInScreen(),
-                      ));
-                  debugPrint('next page');
-                },
-                child: RichText(
-                  text: const TextSpan(
-                    text: "  already have an account?",
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "  already have an account?",
                     style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 14, fontFamily: "CircularStd"),
-                    children: [
-                      TextSpan(
-                        text: " Log In",
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14, fontFamily: "CircularStd"),
-                      ),
-                    ],
                   ),
-                ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LogInScreen(),
+                          ));
+                      debugPrint('next page');
+                    },
+                    child: Text(
+                      " Log In",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14, fontFamily: "CircularStd"),
+                    ),
+                  )
+                ],
               ),
             ],
           ),
