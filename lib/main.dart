@@ -1,4 +1,5 @@
-import 'package:crypto_app/splash_screen.dart';
+import 'package:crypto_app/routes/routes.dart';
+import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      // routes: appRoutes,
-      // initialRoute: RoutesName.splashScreen,
-      home: const Splashscreen(),
+      routes: appRoutes,
+      initialRoute: RoutesName.splashScreen,
+      //home: const AssetScreen(),
     );
   }
 }

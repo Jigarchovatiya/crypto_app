@@ -1,4 +1,4 @@
-import 'package:crypto_app/bottom_bar/bottom_screen.dart';
+import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                   onTap: () {
                     Navigator.pop(context);
-                    debugPrint('next page');
+                    debugPrint('Back ------>>');
                   },
                 ),
               ),
@@ -116,12 +116,12 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(height: 50),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomScreen(),
-                      ));
-                  debugPrint('next page');
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RoutesName.bottomScreen,
+                    (route) => false,
+                  );
+                  debugPrint('Bottom Screen ----->>');
                 },
                 child: Container(
                   height: 50,

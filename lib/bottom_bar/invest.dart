@@ -8,7 +8,32 @@ class Invest extends StatefulWidget {
 }
 
 class _InvestState extends State<Invest> {
-  List investList = [{}];
+  List investList = [
+    {
+      "image": "assets/Icons/Filter.png",
+      "label": "Buy",
+      "discount": "Top-up your portfolio",
+      "Color": const Color(0xFF58B757),
+    },
+    {
+      "image": "assets/Icons/Swap.png",
+      "label": "Auto-buy",
+      "discount": "Low-risk auto purchase",
+      "Color": const Color(0xFFB82F80),
+    },
+    {
+      "image": "assets/Icons/Star.png",
+      "label": "Challenges",
+      "discount": "Invest in your crew",
+      "Color": const Color(0xFF4538EC),
+    },
+    {
+      "image": "assets/Icons/Activity.png",
+      "label": "Portfolio",
+      "discount": "Manage your portfolio",
+      "Color": const Color(0xFF4E9CCE),
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,9 +42,9 @@ class _InvestState extends State<Invest> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.only(left: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -104,13 +129,13 @@ class _InvestState extends State<Invest> {
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(
                       width: 1,
-                      color: Color(0xFFE1E3E6),
+                      color: const Color(0xFFE1E3E6),
                     ),
                     color: Colors.white),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Column(
-                    children: [
+                    children: const [
                       SizedBox(height: 10),
                       Align(
                         alignment: Alignment.centerLeft,
@@ -129,28 +154,28 @@ class _InvestState extends State<Invest> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Divider(
+            const SizedBox(height: 20),
+            const Divider(
               color: Color(0xFFE1E3E6),
               thickness: 2,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GridView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 4,
                   itemBuilder: (context, index) => Center(
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           height: 120,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             border: Border.all(
                               width: 1,
-                              color: Color(0xFFE1E3E6),
+                              color: const Color(0xFFE1E3E6),
                             ),
                           ),
                           child: Column(
@@ -161,15 +186,19 @@ class _InvestState extends State<Invest> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.black,
+                                      color: investList[index]['Color'],
                                     ),
-                                    child: Icon(Icons.account_circle_outlined, size: 20),
+                                    child: Image.asset(
+                                      investList[index]['image'],
+                                      height: 25,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   index == 2
-                                      ? Text(
+                                      ? const Text(
                                           "\$1,500",
                                           style: TextStyle(
                                             color: Color(0xFF8C8A87),
@@ -178,7 +207,7 @@ class _InvestState extends State<Invest> {
                                             fontFamily: "CircularStd",
                                           ),
                                         )
-                                      : Text(
+                                      : const Text(
                                           " 0 ",
                                           style: TextStyle(
                                             color: Color(0xFF8C8A87),
@@ -189,10 +218,10 @@ class _InvestState extends State<Invest> {
                                         ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Text(
-                                "Chalange",
-                                style: TextStyle(
+                                investList[index]['label'],
+                                style: const TextStyle(
                                   color: Color(0xFF8C8A87),
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
@@ -200,8 +229,8 @@ class _InvestState extends State<Invest> {
                                 ),
                               ),
                               Text(
-                                "Earn 2.5% p.a",
-                                style: TextStyle(
+                                investList[index]['discount'],
+                                style: const TextStyle(
                                   color: Color(0xFF8C8A87),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
@@ -212,9 +241,9 @@ class _InvestState extends State<Invest> {
                           ),
                         ),
                       ),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15, childAspectRatio: 1.4)),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15, childAspectRatio: 1.4)),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),

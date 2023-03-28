@@ -9,4 +9,6 @@ class RoutesName {
   static const String investScreen = "/investScreen";
   static const String exploreScreen = "/exploreScreen";
   static const String profileScreen = "/profileScreen";
+  static const String challengeScreen = "/challengeScreen";
+  static const String assetScreen = "/assetScreen";
 }

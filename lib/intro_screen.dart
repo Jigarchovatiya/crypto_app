@@ -1,5 +1,4 @@
-import 'package:crypto_app/log_in_screen.dart';
-import 'package:crypto_app/sign_up_screen.dart';
+import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -52,12 +51,8 @@ class IntroScreen extends StatelessWidget {
               const SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignUpScreen(),
-                      ));
-                  debugPrint('next page');
+                  Navigator.pushNamed(context, RoutesName.signUpScreen);
+                  debugPrint('Sign Up screen ---->>');
                 },
                 child: Container(
                   height: 50,
@@ -80,12 +75,8 @@ class IntroScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LogInScreen(),
-                          ));
-                      debugPrint('next page');
+                      Navigator.pushNamed(context, RoutesName.logInScreen);
+                      debugPrint('Log In Screen ---->>');
                     },
                     child: Text(
                       " Log In",

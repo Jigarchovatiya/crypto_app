@@ -1,4 +1,4 @@
-import 'package:crypto_app/bottom_bar/bottom_screen.dart';
+import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   onTap: () {
                     Navigator.pop(context);
-                    debugPrint('next page');
+                    debugPrint('Back ------>>');
                   },
                 ),
               ),
@@ -164,12 +164,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: 30),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomScreen(),
-                      ));
-                  debugPrint('next page');
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RoutesName.bottomScreen,
+                    (route) => false,
+                  );
+                  debugPrint('Bottom Screen ----->>');
                 },
                 child: Container(
                   height: 50,
