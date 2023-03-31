@@ -14,18 +14,13 @@ class BottomScreen extends StatefulWidget {
 }
 
 class _BottomScreenState extends State<BottomScreen> {
-  final List<Widget> _widgetOptions = [
+  final List widgetOptions = [
     const HomeScreen(),
     const Save(),
     const Invest(),
     const Explore(),
     const Profile(),
   ];
-  void _onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
   int selectedIndex = 0;
   @override
@@ -40,63 +35,43 @@ class _BottomScreenState extends State<BottomScreen> {
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: selectedIndex == 0
-                    ? SvgPicture.asset(
-                        "assets/Icons/Home_fill.svg",
-                      )
-                    : SvgPicture.asset(
-                        "assets/Icons/Home.svg",
-                      ),
+                icon: SvgPicture.asset(
+                  selectedIndex == 0 ? "assets/Icons/Home_fill.svg" : "assets/Icons/Home.svg",
+                ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex == 1
-                    ? SvgPicture.asset(
-                        "assets/Icons/wallet_Fill.svg",
-                      )
-                    : SvgPicture.asset(
-                        "assets/Icons/Wallet.svg",
-                      ),
+                icon: SvgPicture.asset(
+                  selectedIndex == 1 ? "assets/Icons/wallet_Fill.svg" : "assets/Icons/Wallet.svg",
+                ),
                 label: 'Save',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex == 2
-                    ? SvgPicture.asset(
-                        "assets/Icons/save_Fill.svg",
-                      )
-                    : SvgPicture.asset(
-                        "assets/Icons/save.svg",
-                      ),
+                icon: SvgPicture.asset(
+                  selectedIndex == 2 ? "assets/Icons/save_Fill.svg" : "assets/Icons/save.svg",
+                ),
                 label: 'Invest',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex == 3
-                    ? SvgPicture.asset(
-                        "assets/Icons/Search_fill.svg",
-                      )
-                    : SvgPicture.asset(
-                        "assets/Icons/Search.svg",
-                      ),
+                icon: SvgPicture.asset(selectedIndex == 3 ? "assets/Icons/Search_fill.svg" : "assets/Icons/Search.svg"),
                 label: 'Explore',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex == 4
-                    ? SvgPicture.asset(
-                        "assets/Icons/Profile_fill.svg",
-                      )
-                    : SvgPicture.asset(
-                        "assets/Icons/Profile.svg",
-                      ),
+                icon: SvgPicture.asset(
+                  selectedIndex == 4 ? "assets/Icons/Profile_fill.svg" : "assets/Icons/Profile.svg",
+                ),
                 label: 'Profile',
               ),
             ],
             currentIndex: selectedIndex,
             selectedItemColor: Colors.black,
             unselectedItemColor: const Color(0xff999999),
-            onTap: _onItemTapped,
+            onTap: (value) => setState(() {
+              selectedIndex = value;
+            }),
           ),
         ),
-        body: _widgetOptions.elementAt(selectedIndex),
+        body: widgetOptions.elementAt(selectedIndex),
       ),
     );
   }

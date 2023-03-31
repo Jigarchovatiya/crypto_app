@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Crypto app',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blueGrey, bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.transparent)),
       routes: appRoutes,
       initialRoute: RoutesName.splashScreen,
       //home: const AssetScreen(),

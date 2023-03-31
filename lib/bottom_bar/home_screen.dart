@@ -473,11 +473,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            SizedBox(height: 80),
           ],
         ),
       ),
-      bottomSheet: Container(
-        color: const Color(0xFFFEFAF4),
+      bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -485,6 +485,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
               decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(color: Colors.black, width: 1),
               ),
