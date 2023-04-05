@@ -26,59 +26,57 @@ class _BottomScreenState extends State<BottomScreen> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color(0xFFFEFAF4),
-        bottomNavigationBar: SizedBox(
-          height: 80,
-          child: BottomNavigationBar(
-            backgroundColor: const Color(0xFFFEFAF4),
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  "assets/Icons/Home_fill.svg",
-                ),
-                icon: SvgPicture.asset("assets/Icons/Home.svg"),
-                label: 'Home',
+    return Scaffold(
+      backgroundColor: const Color(0xFFFEFAF4),
+      bottomNavigationBar: SizedBox(
+        height: 80,
+        child: BottomNavigationBar(
+          backgroundColor: const Color(0xFFFEFAF4),
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(
+                "assets/Icons/Home_fill.svg",
               ),
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  "assets/Icons/wallet_Fill.svg",
-                ),
-                icon: SvgPicture.asset("assets/Icons/Wallet.svg"),
-                label: 'Save',
+              icon: SvgPicture.asset("assets/Icons/Home.svg"),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(
+                "assets/Icons/wallet_Fill.svg",
               ),
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  "assets/Icons/save_Fill.svg",
-                ),
-                icon: SvgPicture.asset("assets/Icons/save.svg"),
-                label: 'Invest',
+              icon: SvgPicture.asset("assets/Icons/Wallet.svg"),
+              label: 'Save',
+            ),
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(
+                "assets/Icons/save_Fill.svg",
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset("assets/Icons/Search.svg"),
-                label: 'Explore',
-                activeIcon: SvgPicture.asset("assets/Icons/Search_fill.svg"),
+              icon: SvgPicture.asset("assets/Icons/save.svg"),
+              label: 'Invest',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/Icons/Search.svg"),
+              label: 'Explore',
+              activeIcon: SvgPicture.asset("assets/Icons/Search_fill.svg"),
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                "assets/Icons/Profile.svg",
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/Icons/Profile.svg",
-                ),
-                activeIcon: SvgPicture.asset("assets/Icons/Profile_fill.svg"),
-                label: 'Profile',
-              ),
-            ],
-            currentIndex: selectedIndex,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: const Color(0xff999999),
-            onTap: (value) => setState(() {
-              selectedIndex = value;
-            }),
-          ),
+              activeIcon: SvgPicture.asset("assets/Icons/Profile_fill.svg"),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: selectedIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: const Color(0xff999999),
+          onTap: (value) => setState(() {
+            selectedIndex = value;
+          }),
         ),
-        body: screenList.elementAt(selectedIndex),
       ),
+      body: screenList.elementAt(selectedIndex),
     );
   }
 }
