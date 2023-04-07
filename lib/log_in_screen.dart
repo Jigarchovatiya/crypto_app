@@ -9,6 +9,11 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool password = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,138 +22,165 @@ class _LogInScreenState extends State<LogInScreen> {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Center(
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: InkWell(
-                    child: const Icon(
-                      Icons.arrow_back_ios,
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        debugPrint('Back ------>>');
+                      },
                     ),
+                  ),
+                  const SizedBox(height: 50),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Welcome back",
+                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25, fontFamily: "CircularStd"),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Sign in with your email to continue.",
+                      style: TextStyle(color: Color(0xFF8C8A87), fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
+                    ),
+                  ),
+                  const SizedBox(height: 80),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "your email",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 47,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: const Color(0xFFE1E3E6),
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please enter your E-mail';
+                            } else if (value.length < 4) {
+                              return 'Please enter valid E-mail';
+                            }
+                            return null;
+                          },
+                          controller: emailController,
+                          // obscureText: true,
+                          textCapitalization: TextCapitalization.none,
+                          textInputAction: TextInputAction.next,
+                          autofocus: false,
+                          decoration: const InputDecoration(
+                            hintText: "Email",
+                            hintStyle: TextStyle(
+                              color: Color(0xFF8C8A87),
+                            ),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Your password",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 47,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: const Color(0xFFE1E3E6),
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please enter password ';
+                            } else if (value.length < 10) {
+                              return 'Please enter valid password';
+                            }
+                            return null;
+                          },
+                          autofocus: false,
+                          obscureText: true,
+                          textInputAction: TextInputAction.done,
+                          textCapitalization: TextCapitalization.words,
+                          decoration: const InputDecoration(
+                            hintText: "Enter your password",
+                            hintStyle: TextStyle(
+                              color: Color(0xFF8C8A87),
+                            ),
+                            border: InputBorder.none,
+                            suffixIcon: Icon(Icons.visibility_off_outlined),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const SizedBox(height: 50),
+                  InkWell(
                     onTap: () {
-                      Navigator.pop(context);
-                      debugPrint('Back ------>>');
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        RoutesName.bottomScreen,
+                        (route) => false,
+                      );
+                      debugPrint('Bottom Screen ----->>');
                     },
-                  ),
-                ),
-                const SizedBox(height: 50),
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Welcome back",
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25, fontFamily: "CircularStd"),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Sign in with your email to continue.",
-                    style: TextStyle(color: Color(0xFF8C8A87), fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
-                  ),
-                ),
-                const SizedBox(height: 80),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "your email",
-                    style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  height: 47,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: const Color(0xFFE1E3E6),
-                    ),
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextFormField(
-                        autofocus: false,
-                        decoration: const InputDecoration(
-                          hintText: "Email",
-                          hintStyle: TextStyle(
-                            color: Color(0xFF8C8A87),
-                          ),
-                          border: InputBorder.none,
-                        ),
+                    child: Container(
+                      height: 50,
+                      width: 320,
+                      decoration: BoxDecoration(color: const Color(0xFF000000), borderRadius: BorderRadius.circular(15)),
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'Get Started',
+                        style: TextStyle(fontFamily: 'Poppins-Regular.ttf', fontWeight: FontWeight.w700, color: Color(0xffFFFFFF)),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Your password",
-                    style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
+                  const SizedBox(height: 30),
+                  const Text(
+                    " Forgot Password?",
+                    style: TextStyle(color: Color(0xFFEE9136), fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd", decoration: TextDecoration.underline),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  height: 47,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: const Color(0xFFE1E3E6),
-                    ),
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextFormField(
-                        autofocus: false,
-                        decoration: const InputDecoration(
-                          hintText: "Enter your password",
-                          hintStyle: TextStyle(
-                            color: Color(0xFF8C8A87),
-                          ),
-                          border: InputBorder.none,
-                          suffixIcon: Icon(Icons.visibility_off_outlined),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const SizedBox(height: 50),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      RoutesName.bottomScreen,
-                      (route) => false,
-                    );
-                    debugPrint('Bottom Screen ----->>');
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 320,
-                    decoration: BoxDecoration(color: const Color(0xFF000000), borderRadius: BorderRadius.circular(15)),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Get Started',
-                      style: TextStyle(fontFamily: 'Poppins-Regular.ttf', fontWeight: FontWeight.w700, color: Color(0xffFFFFFF)),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 30),
-                Text(
-                  " Forgot Password?",
-                  style: TextStyle(color: Color(0xFFEE9136), fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd", decoration: TextDecoration.underline),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
