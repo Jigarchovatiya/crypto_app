@@ -1,3 +1,4 @@
+import 'package:crypto_app/common/app_text_field.dart';
 import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
@@ -79,27 +80,19 @@ class _LogInScreenState extends State<LogInScreen> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
+                        child: AppTextField(
+                          hintText: "Email",
                           validator: (value) {
                             if (value == null) {
-                              return 'Please enter your E-mail';
-                            } else if (value.length < 4) {
-                              return 'Please enter valid E-mail';
+                              return "Please Enter Email";
+                            } else if (!RegExp(r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1D,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\$').hasMatch(value)) {
+                              return "Please Enter a Valid Email";
                             }
                             return null;
                           },
                           controller: emailController,
                           // obscureText: true,
-                          textCapitalization: TextCapitalization.none,
-                          textInputAction: TextInputAction.next,
                           autofocus: false,
-                          decoration: const InputDecoration(
-                            hintText: "Email",
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C8A87),
-                            ),
-                            border: InputBorder.none,
-                          ),
                         ),
                       ),
                     ),
@@ -129,13 +122,14 @@ class _LogInScreenState extends State<LogInScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: TextFormField(
                           validator: (value) {
-                            if (value == null) {
-                              return 'Please enter password ';
-                            } else if (value.length < 10) {
-                              return 'Please enter valid password';
+                            if (value!.isEmpty) {
+                              return 'Please enter password';
+                            } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
+                              return 'Please enter valid  password';
                             }
                             return null;
                           },
+                          controller: passwordController,
                           autofocus: false,
                           obscureText: true,
                           textInputAction: TextInputAction.done,

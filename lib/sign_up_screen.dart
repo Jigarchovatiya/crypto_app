@@ -1,6 +1,8 @@
 import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
+import 'common/app_text_field.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -22,10 +24,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: const Color(0xFFFEFAF4),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Center(
+        child: Center(
+          child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            physics: const BouncingScrollPhysics(),
             child: Form(
               key: formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              onChanged: () {
+                setState(() {});
+              },
               child: Column(
                 children: [
                   Align(
@@ -79,24 +87,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
+                        child: AppTextField(
+                          hintText: "Email",
                           controller: emailController,
                           validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter name';
-                            } else if (value.length < 5) {
-                              return 'too short';
+                            if (value == null) {
+                              return "Please Enter Email";
+                            } else if (!RegExp(r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1D,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\$').hasMatch(value)) {
+                              return "Please Enter a Valid Email";
                             }
                             return null;
                           },
-                          autofocus: false,
-                          decoration: const InputDecoration(
-                            hintText: "Email",
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C8A87),
-                            ),
-                            border: InputBorder.none,
-                          ),
                         ),
                       ),
                     ),
@@ -124,26 +125,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
+                        child: AppTextField(
+                          hintText: "Enter Referral code",
                           validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter referral code';
-                            } else if (value.length < 8) {
-                              return 'Not valid';
+                            if (value == null) {
+                              return "Please Enter Email";
+                            } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
+                              return "Please Enter a Valid referral code";
                             }
                             return null;
                           },
                           controller: referralController,
                           autofocus: false,
-                          textInputAction: TextInputAction.next,
-                          textCapitalization: TextCapitalization.words,
-                          decoration: const InputDecoration(
-                            hintText: "Enter referral code",
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C8A87),
-                            ),
-                            border: InputBorder.none,
-                          ),
                         ),
                       ),
                     ),
@@ -171,26 +164,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
-                          textInputAction: TextInputAction.done,
-                          controller: passwordController,
+                        child: AppTextField(
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter password';
-                            } else if (value.length < 8) {
+                            } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
                               return 'Please enter valid  password';
                             }
                             return null;
                           },
-                          autofocus: false,
-                          decoration: const InputDecoration(
-                            hintText: "Enter your password",
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C8A87),
-                            ),
-                            border: InputBorder.none,
-                            suffixIcon: Icon(Icons.visibility_off_outlined),
-                          ),
+                          obscureText: password,
+                          controller: passwordController,
+                          hintText: "Password",
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                password = !password;
+                                setState(() {});
+                              },
+                              icon: password == true ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility)),
                         ),
                       ),
                     ),
@@ -244,12 +235,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 30),
                   InkWell(
                     onTap: () {
+                      formKey.currentState!.validate();
+                      debugPrint("validate ---> ${formKey.currentState!.validate()}");
                       Navigator.pushNamedAndRemoveUntil(
                         context,
                         RoutesName.bottomScreen,
                         (route) => false,
                       );
                       debugPrint('Bottom Screen ----->>');
+                      setState(() {});
                     },
                     child: Container(
                       height: 50,
