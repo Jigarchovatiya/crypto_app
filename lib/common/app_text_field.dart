@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../constant/color_constant.dart';
-
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
+  final TextInputAction? textInputAction;
   final Widget? suffixIcon;
   final TextInputType keyboardType;
   final String? label;
@@ -23,7 +22,6 @@ class AppTextField extends StatelessWidget {
   final int maxLines;
   final EdgeInsetsGeometry margin;
   final bool autofocus;
-  final Color? fillColor;
 
   const AppTextField({
     Key? key,
@@ -43,37 +41,50 @@ class AppTextField extends StatelessWidget {
     this.maxLines = 1,
     this.margin = const EdgeInsets.only(top: 8, bottom: 8, right: 20),
     this.autofocus = false,
-    this.fillColor,
     this.onChanged,
     this.hintText,
     this.suffixIcon,
+    this.textInputAction,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      child: TextFormField(
-        textInputAction: TextInputAction.next,
-        controller: controller,
-        validator: validator,
-        obscureText: obscureText,
-        autofocus: false,
-        decoration: InputDecoration(
-          isDense: true,
-          suffixIcon: suffixIcon,
-          hintText: hintText,
-          hintStyle: const TextStyle(
-            color: Color(0xFF8C8A87),
-          ),
-          border: InputBorder.none,
+    return TextFormField(
+      textInputAction: textInputAction,
+      controller: controller,
+      validator: validator,
+      obscureText: obscureText,
+      autofocus: false,
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.blue, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Colors.red,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(15)),
+        isDense: true,
+        suffixIcon: suffixIcon,
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          color: Color(0xFF8C8A87),
+        ),
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
         ),
       ),
     );
   }
 
-  static OutlineInputBorder appOutlineInputBorder({Color? color}) => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: color ?? AppColor.textFieldColor, width: 1),
-      );
+  // static OutlineInputBorder appOutlineInputBorder({Color? color}) => OutlineInputBorder(
+  //       borderRadius: BorderRadius.circular(10),
+  //       borderSide: BorderSide(color: color ?? AppColor.textFieldColor, width: 1),
+  //     );
 }

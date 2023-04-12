@@ -15,8 +15,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController referralController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  bool isTrue = false;
-  bool password = false;
+  bool isTrue = true;
+  bool password = true;
+  bool validator = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -73,34 +74,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    height: 47,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: const Color(0xFFE1E3E6),
-                      ),
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: AppTextField(
-                          hintText: "Email",
-                          controller: emailController,
-                          validator: (value) {
-                            if (value == null) {
-                              return "Please Enter Email";
-                            } else if (!RegExp(r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1D,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\$').hasMatch(value)) {
-                              return "Please Enter a Valid Email";
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ),
+                  AppTextField(
+                    hintText: "Email",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please Enter Email";
+                      } else if (!RegExp(r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1D,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\$').hasMatch(value!)) {
+                        return "Please Enter a Valid Email";
+                      }
+                      return null;
+                    },
+                    textInputAction: TextInputAction.next,
+                    controller: emailController,
+                    autofocus: true,
                   ),
                   const SizedBox(height: 20),
                   const Align(
@@ -111,35 +97,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    height: 47,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: const Color(0xFFE1E3E6),
-                      ),
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: AppTextField(
-                          hintText: "Enter Referral code",
-                          validator: (value) {
-                            if (value == null) {
-                              return "Please Enter Email";
-                            } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
-                              return "Please Enter a Valid referral code";
-                            }
-                            return null;
-                          },
-                          controller: referralController,
-                          autofocus: false,
-                        ),
-                      ),
-                    ),
+                  AppTextField(
+                    hintText: "Enter Referral code",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please Enter referral";
+                      } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
+                        return "Please Enter a Valid referral code";
+                      }
+                      return null;
+                    },
+                    controller: referralController,
+                    autofocus: false,
                   ),
                   const SizedBox(height: 20),
                   const Align(
@@ -150,41 +119,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    height: 47,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: const Color(0xFFE1E3E6),
-                      ),
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: AppTextField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter password';
-                            } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
-                              return 'Please enter valid  password';
-                            }
-                            return null;
-                          },
-                          obscureText: password,
-                          controller: passwordController,
-                          hintText: "Password",
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                password = !password;
-                                setState(() {});
-                              },
-                              icon: password == true ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility)),
-                        ),
-                      ),
-                    ),
+                  AppTextField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter password';
+                      } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
+                        return 'Please enter valid  password';
+                      }
+                      return null;
+                    },
+                    obscureText: password,
+                    controller: passwordController,
+                    hintText: "Password",
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          password = !password;
+                          setState(() {});
+                        },
+                        icon: password == true
+                            ? const Icon(
+                                Icons.visibility_off,
+                                size: 30,
+                              )
+                            : const Icon(
+                                Icons.visibility,
+                                size: 30,
+                              )),
                   ),
                   const SizedBox(height: 20),
                   Row(
@@ -209,13 +169,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 30),
                   Row(
                     children: [
-                      Checkbox(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                          value: isTrue,
-                          onChanged: (value) {
-                            isTrue = value!;
-                            setState(() {});
-                          }),
+                      IconButton(
+                        splashRadius: 1,
+                        onPressed: () {
+                          setState(() {
+                            isTrue = !isTrue;
+                          });
+                        },
+                        icon: Container(
+                          child: isTrue
+                              ? const Icon(
+                                  Icons.circle_outlined,
+                                  size: 30,
+                                  color: Color(0xFF9D9B97),
+                                )
+                              : const Icon(
+                                  Icons.check_circle,
+                                  size: 30,
+                                  color: Color(0xFF9D9B97),
+                                ),
+                        ),
+                      ),
+                      // Checkbox(
+                      //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      //     value: isTrue,
+                      //     onChanged: (value) {
+                      //       isTrue = value!;
+                      //       setState(() {});
+                      //     }),
                       Expanded(
                         child: RichText(
                           text: const TextSpan(
@@ -235,15 +216,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 30),
                   InkWell(
                     onTap: () {
-                      formKey.currentState!.validate();
-                      debugPrint("validate ---> ${formKey.currentState!.validate()}");
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        RoutesName.bottomScreen,
-                        (route) => false,
-                      );
-                      debugPrint('Bottom Screen ----->>');
-                      setState(() {});
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.validate();
+                        debugPrint("validate ---> ${formKey.currentState!.validate()}");
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RoutesName.bottomScreen,
+                          (route) => false,
+                        );
+                        debugPrint('Bottom Screen ----->>');
+                        setState(() {});
+                      } else {
+                        formKey.currentState!.save();
+                      }
                     },
                     child: Container(
                       height: 50,
