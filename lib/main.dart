@@ -1,7 +1,7 @@
-import 'package:crypto_app/routes/routes.dart';
-import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'bottom_bar/bottom_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Crypto app',
       theme: ThemeData(primarySwatch: Colors.blueGrey, bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.transparent)),
-      routes: appRoutes,
-      initialRoute: RoutesName.splashScreen,
-      //home: const AssetScreen(),
+      // routes: appRoutes,
+      // initialRoute: RoutesName.splashScreen,
+      home: const BottomScreen(),
     );
   }
 }

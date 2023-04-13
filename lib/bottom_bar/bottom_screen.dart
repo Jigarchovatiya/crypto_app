@@ -15,7 +15,7 @@ class BottomScreen extends StatefulWidget {
 }
 
 class _BottomScreenState extends State<BottomScreen> {
-  final List widgetOptions = [
+  final List screenList = [
     const HomeScreen(),
     const Save(),
     const Invest(),
@@ -36,31 +36,36 @@ class _BottomScreenState extends State<BottomScreen> {
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  selectedIndex == 0 ? "assets/Icons/Home_fill.svg" : "assets/Icons/Home.svg",
+                activeIcon: SvgPicture.asset(
+                  "assets/Icons/Home_fill.svg",
                 ),
+                icon: SvgPicture.asset("assets/Icons/Home.svg"),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  selectedIndex == 1 ? "assets/Icons/wallet_Fill.svg" : "assets/Icons/Wallet.svg",
+                activeIcon: SvgPicture.asset(
+                  "assets/Icons/wallet_Fill.svg",
                 ),
+                icon: SvgPicture.asset("assets/Icons/Wallet.svg"),
                 label: 'Save',
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  selectedIndex == 2 ? "assets/Icons/save_Fill.svg" : "assets/Icons/save.svg",
+                activeIcon: SvgPicture.asset(
+                  "assets/Icons/save_Fill.svg",
                 ),
+                icon: SvgPicture.asset("assets/Icons/save.svg"),
                 label: 'Invest',
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(selectedIndex == 3 ? "assets/Icons/Search_fill.svg" : "assets/Icons/Search.svg"),
+                icon: SvgPicture.asset("assets/Icons/Search.svg"),
                 label: 'Explore',
+                activeIcon: SvgPicture.asset("assets/Icons/Search_fill.svg"),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  selectedIndex == 4 ? "assets/Icons/Profile_fill.svg" : "assets/Icons/Profile.svg",
+                  "assets/Icons/Profile.svg",
                 ),
+                activeIcon: SvgPicture.asset("assets/Icons/Profile_fill.svg"),
                 label: 'Profile',
               ),
             ],
@@ -72,7 +77,7 @@ class _BottomScreenState extends State<BottomScreen> {
             }),
           ),
         ),
-        body: widgetOptions.elementAt(selectedIndex),
+        body: screenList.elementAt(selectedIndex),
       ),
     );
   }
