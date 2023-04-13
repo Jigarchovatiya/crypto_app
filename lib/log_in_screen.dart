@@ -114,12 +114,14 @@ class _LogInScreenState extends State<LogInScreen> {
                         },
                         icon: password == true
                             ? const Icon(
-                                Icons.visibility_off,
+                                Icons.visibility_off_outlined,
                                 size: 30,
+                                color: Color(0xFF200E32),
                               )
                             : const Icon(
-                                Icons.visibility,
+                                Icons.visibility_outlined,
                                 size: 30,
+                                color: Color(0xFF200E32),
                               )),
                   ),
                   const SizedBox(height: 50),

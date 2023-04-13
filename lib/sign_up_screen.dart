@@ -1,3 +1,4 @@
+import 'package:crypto_app/extensions/extension.dart';
 import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             physics: const BouncingScrollPhysics(),
             child: Form(
               key: formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
+              autovalidateMode: AutovalidateMode.always,
               onChanged: () {
                 setState(() {});
               },
@@ -76,14 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 10),
                   AppTextField(
                     hintText: "Email",
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please Enter Email";
-                      } else if (!RegExp(r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1D,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\$').hasMatch(value!)) {
-                        return "Please Enter a Valid Email";
-                      }
-                      return null;
-                    },
+                    validator: (value) => value!.isValidEmail() ? null : "Please Check Your Email",
                     textInputAction: TextInputAction.next,
                     controller: emailController,
                     autofocus: true,
@@ -96,17 +90,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  10.0.addHSpace(),
                   AppTextField(
                     hintText: "Enter Referral code",
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please Enter referral";
-                      } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
-                        return "Please Enter a Valid referral code";
-                      }
-                      return null;
-                    },
+                    validator: (value) => value!.isValidReferral() ? null : "Please Enter Correct Referral",
                     controller: referralController,
                     autofocus: false,
                   ),
@@ -118,16 +105,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15, fontFamily: "CircularStd"),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  10.0.addHSpace(),
                   AppTextField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter password';
-                      } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
-                        return 'Please enter valid  password';
-                      }
-                      return null;
-                    },
+                    validator: (value) => value!.isValidPassword() ? null : "Please Enter Correct Password",
                     obscureText: password,
                     controller: passwordController,
                     hintText: "Password",
@@ -138,12 +118,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         icon: password == true
                             ? const Icon(
-                                Icons.visibility_off,
+                                Icons.visibility_off_outlined,
                                 size: 30,
+                                color: Color(0xFF200E32),
                               )
                             : const Icon(
-                                Icons.visibility,
+                                Icons.visibility_outlined,
                                 size: 30,
+                                color: Color(0xFF200E32),
                               )),
                   ),
                   const SizedBox(height: 20),
