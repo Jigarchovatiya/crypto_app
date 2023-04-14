@@ -87,9 +87,9 @@ class _AssetScreenState extends State<AssetScreen> {
                             height: 30,
                           ),
                         ),
-                        Column(
+                        const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "\$19,311.59",
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400, fontFamily: "CircularStd"),

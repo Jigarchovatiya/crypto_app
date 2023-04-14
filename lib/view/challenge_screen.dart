@@ -44,11 +44,11 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     "Popular Challenges",
                     style: TextStyle(
@@ -201,8 +201,8 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                       ),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Text(
                           "Active",
                           style: TextStyle(

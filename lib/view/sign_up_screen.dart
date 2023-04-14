@@ -128,8 +128,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               )),
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(Icons.error_outline, size: 24),
                       Text(
                         "  Password must be more than 8 characters.",
@@ -138,8 +138,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(Icons.error_outline, size: 24),
                       Text(
                         "  Password must contain a mix of uppercase,\n  lowercase, numbers and special characters.",
