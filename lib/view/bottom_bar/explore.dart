@@ -1,5 +1,6 @@
-import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
+
+import '../../res/routes/routes_name.dart';
 
 class Explore extends StatefulWidget {
   const Explore({Key? key}) : super(key: key);
@@ -60,11 +61,11 @@ class _ExploreState extends State<Explore> {
                 ],
               ),
               const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                       "Top collections",
                       style: TextStyle(
@@ -209,11 +210,11 @@ class _ExploreState extends State<Explore> {
                 ),
               ),
               const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                       "Top collections",
                       style: TextStyle(
@@ -325,7 +326,7 @@ class _ExploreState extends State<Explore> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Popular Challenges",
                       style: TextStyle(
                         fontSize: 17,
@@ -339,7 +340,7 @@ class _ExploreState extends State<Explore> {
                         Navigator.pushNamed(context, RoutesName.challengeScreen);
                         debugPrint("Challenge screen --->>");
                       },
-                      child: Text(
+                      child: const Text(
                         "See all",
                         style: TextStyle(
                           fontSize: 13,

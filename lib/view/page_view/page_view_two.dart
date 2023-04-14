@@ -1,8 +1,8 @@
-import 'package:crypto_app/extensions/extension.dart';
+import 'package:crypto_app/res/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
-class PageViewThree extends StatelessWidget {
-  const PageViewThree({Key? key}) : super(key: key);
+class PageViewTwo extends StatelessWidget {
+  const PageViewTwo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +14,16 @@ class PageViewThree extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20, fontFamily: "CircularStd"),
         ),
-        50.0.addHSpace(),
+        40.0.addHSpace(),
         Image.asset(
           "assets/images/image2.png",
           height: 260,
         ),
         40.0.addHSpace(),
         const Text(
-          "Earn daily in dollars",
+          "Invest like a beginner,\nearn like a pro",
           textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25, fontFamily: "CircularStd"),
+          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22, fontFamily: "CircularStd"),
         ),
         30.0.addHSpace(),
         const Text(

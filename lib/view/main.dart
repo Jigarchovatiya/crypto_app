@@ -1,7 +1,8 @@
-import 'package:crypto_app/routes/routes.dart';
-import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../res/routes/routes.dart';
+import '../res/routes/routes_name.dart';
 
 void main() {
   runApp(const MyApp());

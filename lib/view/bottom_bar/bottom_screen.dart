@@ -1,10 +1,10 @@
-import 'package:crypto_app/bottom_bar/explore.dart';
-import 'package:crypto_app/bottom_bar/home_screen.dart';
-import 'package:crypto_app/bottom_bar/profile.dart';
-import 'package:crypto_app/bottom_bar/save.dart';
+import 'package:crypto_app/view/bottom_bar/profile.dart';
+import 'package:crypto_app/view/bottom_bar/save.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'explore.dart';
+import 'home_screen.dart';
 import 'invest.dart';
 
 class BottomScreen extends StatefulWidget {

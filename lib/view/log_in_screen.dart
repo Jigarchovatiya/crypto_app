@@ -1,7 +1,8 @@
-import 'package:crypto_app/common/app_text_field.dart';
-import 'package:crypto_app/extensions/extension.dart';
-import 'package:crypto_app/routes/routes_name.dart';
+import 'package:crypto_app/res/extensions/extension.dart';
 import 'package:flutter/material.dart';
+
+import '../res/common/app_text_field.dart';
+import '../res/routes/routes_name.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);

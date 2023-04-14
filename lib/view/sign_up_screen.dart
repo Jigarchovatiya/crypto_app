@@ -1,8 +1,8 @@
-import 'package:crypto_app/extensions/extension.dart';
-import 'package:crypto_app/routes/routes_name.dart';
+import 'package:crypto_app/res/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
-import 'common/app_text_field.dart';
+import '../res/common/app_text_field.dart';
+import '../res/routes/routes_name.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);

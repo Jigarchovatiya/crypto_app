@@ -1,5 +1,6 @@
-import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
+
+import '../res/routes/routes_name.dart';
 
 class ChallengeScreen extends StatefulWidget {
   const ChallengeScreen({Key? key}) : super(key: key);

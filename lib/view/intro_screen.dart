@@ -1,10 +1,11 @@
-import 'package:crypto_app/extensions/extension.dart';
-import 'package:crypto_app/page_view/page_view_one.dart';
-import 'package:crypto_app/page_view/page_view_three.dart';
-import 'package:crypto_app/page_view/page_view_two.dart';
-import 'package:crypto_app/routes/routes_name.dart';
+import 'package:crypto_app/res/extensions/extension.dart';
+import 'package:crypto_app/view/page_view/page_view_one.dart';
+import 'package:crypto_app/view/page_view/page_view_three.dart';
+import 'package:crypto_app/view/page_view/page_view_two.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../res/routes/routes_name.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({Key? key}) : super(key: key);

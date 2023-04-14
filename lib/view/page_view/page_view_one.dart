@@ -1,4 +1,4 @@
-import 'package:crypto_app/extensions/extension.dart';
+import 'package:crypto_app/res/extensions/extension.dart';
 import 'package:flutter/material.dart';
 
 class PageViewOne extends StatelessWidget {

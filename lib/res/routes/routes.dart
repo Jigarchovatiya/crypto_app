@@ -1,18 +1,18 @@
-import 'package:crypto_app/bottom_bar/bottom_screen.dart';
-import 'package:crypto_app/bottom_bar/explore.dart';
-import 'package:crypto_app/bottom_bar/home_screen.dart';
-import 'package:crypto_app/bottom_bar/invest.dart';
-import 'package:crypto_app/bottom_bar/profile.dart';
-import 'package:crypto_app/bottom_bar/save.dart';
-import 'package:crypto_app/challenge_screen.dart';
-import 'package:crypto_app/intro_screen.dart';
-import 'package:crypto_app/log_in_screen.dart';
-import 'package:crypto_app/routes/routes_name.dart';
-import 'package:crypto_app/sign_up_screen.dart';
-import 'package:crypto_app/splash_screen.dart';
+import 'package:crypto_app/res/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
-import '../assets_screen.dart';
+import '../../view/assets_screen.dart';
+import '../../view/bottom_bar/bottom_screen.dart';
+import '../../view/bottom_bar/explore.dart';
+import '../../view/bottom_bar/home_screen.dart';
+import '../../view/bottom_bar/invest.dart';
+import '../../view/bottom_bar/profile.dart';
+import '../../view/bottom_bar/save.dart';
+import '../../view/challenge_screen.dart';
+import '../../view/intro_screen.dart';
+import '../../view/log_in_screen.dart';
+import '../../view/sign_up_screen.dart';
+import '../../view/splash_screen.dart';
 
 Map<String, WidgetBuilder> appRoutes = {
   RoutesName.splashScreen: (context) => const Splashscreen(),
