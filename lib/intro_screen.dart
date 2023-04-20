@@ -4,6 +4,7 @@ import 'package:crypto_app/page_view/page_view_three.dart';
 import 'package:crypto_app/page_view/page_view_two.dart';
 import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PageController pageController = PageController(initialPage: 0);
+
     return SafeArea(
         child: Scaffold(
       backgroundColor: const Color(0xFFFEFAF4),
@@ -31,6 +33,11 @@ class IntroScreen extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              SmoothPageIndicator(
+                  controller: pageController, // PageController
+                  count: 3,
+                  effect: const JumpingDotEffect(activeDotColor: Colors.black, dotHeight: 10, dotWidth: 10), // your preferred effect
+                  onDotClicked: (index) {}),
               const SizedBox(height: 30),
               InkWell(
                 onTap: () {
@@ -48,7 +55,7 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              30.0.addHSpace(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -58,8 +65,8 @@ class IntroScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      // Navigator.pushNamed(context, RoutesName.logInScreen);
-                      // debugPrint('Log In Screen ---->>');
+                      Navigator.pushNamed(context, RoutesName.logInScreen);
+                      debugPrint('Log In Screen ---->>');
                     },
                     child: const Text(
                       " Log In",

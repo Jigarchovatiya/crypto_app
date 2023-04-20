@@ -93,7 +93,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   10.0.addHSpace(),
                   AppTextField(
                     hintText: "Enter Referral code",
-                    validator: (value) => value!.isValidReferral() ? null : "Please Enter Correct Referral",
                     controller: referralController,
                     autofocus: false,
                   ),
@@ -197,15 +196,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(height: 30),
                   InkWell(
-                    onTap: () {
+                    // onTap: () {
+                    //   if (formKey.currentState!.validate()) {
+                    //     formKey.currentState!.validate();
+                    //     debugPrint("validate ---> ${formKey.currentState!.validate()}");
+                    //
+                    //   } else {
+                    //     formKey.currentState!.save();
+                    //   }
+                    // },
+                    onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        formKey.currentState!.validate();
-                        debugPrint("validate ---> ${formKey.currentState!.validate()}");
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          RoutesName.bottomScreen,
-                          (route) => false,
-                        );
+                        isTrue == false
+                            ? Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                RoutesName.bottomScreen,
+                                (route) => false,
+                              )
+                            : null;
                         debugPrint('Bottom Screen ----->>');
                         setState(() {});
                       } else {
@@ -215,7 +223,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                       height: 50,
                       width: 320,
-                      decoration: BoxDecoration(color: const Color(0xFF9D9B97), borderRadius: BorderRadius.circular(15)),
+                      decoration: BoxDecoration(color: isTrue == true ? const Color(0xFF9D9B97) : const Color(0xFF000000), borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: const Text(
                         'Get Started',

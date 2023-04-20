@@ -31,7 +31,7 @@ class PageViewThree extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(color: Color(0xFF8C8A87), fontWeight: FontWeight.w400, fontSize: 14, fontFamily: "CircularStd"),
         ),
-        130.0.addHSpace(),
+        100.0.addHSpace(),
         const Text(
           " Try out our time machine?",
           textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'package:crypto_app/common/app_text_field.dart';
+import 'package:crypto_app/extensions/extension.dart';
 import 'package:crypto_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
@@ -71,17 +72,10 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                   const SizedBox(height: 10),
                   AppTextField(
-                    enabledBorder: OutlineInputBorder(),
-                    errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red, width: 1)),
+                    enabledBorder: const OutlineInputBorder(),
+                    errorBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.red, width: 1)),
                     hintText: "Email",
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please Enter Email";
-                      } else if (!RegExp(r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1D,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\$').hasMatch(value!)) {
-                        return "Please Enter a Valid Email";
-                      }
-                      return null;
-                    },
+                    validator: (value) => value!.isValidEmail() ? null : "Please Enter Correct E-mail",
                     textInputAction: TextInputAction.next,
                     controller: emailController,
                     autofocus: true,
@@ -96,14 +90,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                   const SizedBox(height: 10),
                   AppTextField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter password';
-                      } else if (RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)").hasMatch(value)) {
-                        return 'Please enter valid  password';
-                      }
-                      return null;
-                    },
+                    validator: (value) => value!.isValidPassword() ? null : "Please Enter Correct Password",
                     obscureText: password,
                     controller: passwordController,
                     hintText: "Password",
