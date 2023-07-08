@@ -33,6 +33,12 @@ class _BottomScreenState extends State<BottomScreen> {
         child: BottomNavigationBar(
           backgroundColor: const Color(0xFFFEFAF4),
           type: BottomNavigationBarType.fixed,
+          currentIndex: selectedIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: const Color(0xff999999),
+          onTap: (value) => setState(() {
+            selectedIndex = value;
+          }),
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               activeIcon: SvgPicture.asset(
@@ -68,12 +74,7 @@ class _BottomScreenState extends State<BottomScreen> {
               label: 'Profile',
             ),
           ],
-          currentIndex: selectedIndex,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: const Color(0xff999999),
-          onTap: (value) => setState(() {
-            selectedIndex = value;
-          }),
+          
         ),
       ),
       body: screenList.elementAt(selectedIndex),
